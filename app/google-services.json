@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "434320064527",
+    "firebase_url": "https://conectpet-a24bd.firebaseio.com",
+    "project_id": "conectpet-a24bd",
+    "storage_bucket": "conectpet-a24bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434320064527:android:aa7eee311d2b6db221e37a",
+        "android_client_info": {
+          "package_name": "com.conect.pet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434320064527-dg0gndvv2kmf19un8dgdq4jadd7bi52u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.conect.pet",
+            "certificate_hash": "b5247a4fb7037e255e8f464589a3f151f85170ec"
+          }
+        },
+        {
+          "client_id": "434320064527-blibsilhtk9a829ir0p210rjmc624ojr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8BoTfwgfNhkbDsCt3kCKZWaAp9yuJFn0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434320064527-blibsilhtk9a829ir0p210rjmc624ojr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
