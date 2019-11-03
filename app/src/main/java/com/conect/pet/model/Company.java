@@ -1,6 +1,13 @@
 package com.conect.pet.model;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.conect.pet.helper.SetupFirebase;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
@@ -8,12 +15,12 @@ import java.io.Serializable;
 
 public class Company implements Serializable {
 
-    private String idUser;
-    private String urlImage;
-    private String name;
-    private String category;
-    private String time;
-    private Double price;
+    public String idUser;
+    public String urlImage;
+    public String name;
+    public String category;
+    public String time;
+    public Double price;
 
 
     public Company() {
@@ -21,16 +28,28 @@ public class Company implements Serializable {
 
     public void save() {
         DatabaseReference firebaseRef = SetupFirebase.getFirebase();
-        DatabaseReference empresaRef = firebaseRef.child("companies")
-                .child(getidUser());
-        empresaRef.setValue(this);
+        DatabaseReference companyRef = firebaseRef.child("companies")
+                .child(getIdUser());
+        companyRef.setValue(this)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.i("Company write", "success");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i("Company write", "failed");
+                    }
+                });
     }
 
-    public String getidUser() {
+    public String getIdUser() {
         return idUser;
     }
 
-    public void setidUser(String idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 

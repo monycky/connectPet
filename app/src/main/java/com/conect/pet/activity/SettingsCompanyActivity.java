@@ -35,9 +35,10 @@ public class SettingsCompanyActivity extends AppCompatActivity {
     private static final int SELECT_GALLERY = 200;
 
     private StorageReference storageReference;
+    private DatabaseReference firebaseRef;
+
     private String idLoggedUser;
     private String urlSelectedImage = "";
-    private DatabaseReference firebaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ public class SettingsCompanyActivity extends AppCompatActivity {
 
     }
 
-    public  void validateCompanyData(View view){
+    public  void validCompanyData(View view){
         String name = editCompanyName.getText().toString();
         String price = editCompanyPrice.getText().toString();
         String category = editCompanyCategory.getText().toString();
@@ -85,7 +86,7 @@ public class SettingsCompanyActivity extends AppCompatActivity {
                 if( !price.isEmpty() ){
 
                     Company company = new Company();
-                    company.setidUser(idLoggedUser);
+                    company.setIdUser(idLoggedUser);
                     company.setName(name);
                     company.setCategory(category);
                     company.setTime(time);
@@ -95,20 +96,20 @@ public class SettingsCompanyActivity extends AppCompatActivity {
                     finish();
 
                 }else{
-                    showMenssage("Digite um valor médio dos serviços");
+                    showMessage("Digite um valor médio dos serviços");
                 }
 
             }else{
-                showMenssage("Digite os tipos de serviços");
+                showMessage("Digite os tipos de serviços");
             }
 
         }else{
-            showMenssage("Digite um nome para a Empresa");
+            showMessage("Digite um nome para a Empresa");
         }
 
     }
 
-    private void showMenssage(String text){
+    private void showMessage(String text){
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
