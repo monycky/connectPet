@@ -38,7 +38,10 @@ dependencies {
     /*MATERIALSEARCHVIEW*/
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 
 }
 

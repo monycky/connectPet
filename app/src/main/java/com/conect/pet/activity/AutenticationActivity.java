@@ -50,7 +50,7 @@ public class AutenticationActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(typeAccess.isChecked()){ //company
                     linearTypeUserCompany.setVisibility(View.VISIBLE);
-                }else{ //user
+                }else{ //profile
                     linearTypeUserCompany.setVisibility(View.GONE);
                 }
             }
@@ -138,7 +138,7 @@ public class AutenticationActivity extends AppCompatActivity {
         if(typeUser.isChecked()){
             return "company";
         }else{
-            return "user";
+            return "profile";
         }
 
     }
@@ -155,7 +155,7 @@ public class AutenticationActivity extends AppCompatActivity {
     private void openMainScreen(String typeUser){
         if(typeUser.equals("company")){ //C is Company
             startActivity(new Intent(getApplicationContext(), CompanyActivity.class));
-        }else{//user
+        }else{//profile
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         }
     }

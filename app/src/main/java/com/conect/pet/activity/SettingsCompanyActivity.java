@@ -1,31 +1,36 @@
 
 package com.conect.pet.activity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.content.Intent;
-import android.view.View;
-import android.provider.MediaStore;
-import java.io.ByteArrayOutputStream;
+
+import com.conect.pet.R;
 import com.conect.pet.helper.SetupFirebase;
 import com.conect.pet.helper.UserFirebase;
 import com.conect.pet.model.Company;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import android.widget.Toast;
+import com.squareup.picasso.Picasso;
 
-
-import com.conect.pet.R;
+import java.io.ByteArrayOutputStream;
 
 public class SettingsCompanyActivity extends AppCompatActivity {
 
@@ -72,7 +77,45 @@ public class SettingsCompanyActivity extends AppCompatActivity {
             }
         });
 
+
+        recoveryCompanyData();
+
     }
+
+    public void recoveryCompanyData(){
+        DatabaseReference empresaRef = firebaseRef
+                .child("companies")
+                .child(idLoggedUser);
+        empresaRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if( dataSnapshot.getValue() != null ){
+
+                    Company company = dataSnapshot.getValue(Company.class );
+                    editCompanyName.setText( company.getName());
+                    editCompanyCategory.setText(company.getCategory());
+                    editCompanyPrice.setText(company.getPrice().toString() );
+                    editCompanyTime.setText(company.getTime().toString());
+
+                    urlSelectedImage = company.getUrlImage();
+
+                    if(urlSelectedImage != "" ){
+                        Picasso.get()
+                                .load(urlSelectedImage)
+                                .into(imageCompanyProfile);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
 
     public  void validCompanyData(View view){
         String name = editCompanyName.getText().toString();
