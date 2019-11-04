@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textNomeRefeicao"
+        android:id="@+id/textNameProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -15,7 +15,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textDescricaoRefeicao"
+        android:id="@+id/textDescriptionProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -23,7 +23,7 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/textPreco"
+        android:id="@+id/textPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="R$ 99.90"

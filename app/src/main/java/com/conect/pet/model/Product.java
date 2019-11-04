@@ -22,7 +22,7 @@ public class Product {
     public Product() {
         DatabaseReference firebaseRef = SetupFirebase.getFirebase();
         DatabaseReference productRef = firebaseRef
-                .child("products");
+                .child("product");
         setIdProduct(productRef.push().getKey());
     }
 
