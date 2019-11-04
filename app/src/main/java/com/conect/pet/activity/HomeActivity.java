@@ -12,10 +12,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 
 import com.conect.pet.R;
 import com.conect.pet.adapter.AdapterCompany;
 import com.conect.pet.helper.SetupFirebase;
+import com.conect.pet.listener.RecyclerItemClickListener;
 import com.conect.pet.model.Company;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -76,6 +79,34 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //Configurar click
+        recyclerCompany.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        this,
+                        recyclerCompany,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+
+                                Company empresaSelecionada = companies.get(position);
+                                Intent i = new Intent(HomeActivity.this, MenuActivity.class);
+                                i.putExtra("companies", empresaSelecionada);
+                                startActivity(i);
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+                )
+        );
 
 
     }

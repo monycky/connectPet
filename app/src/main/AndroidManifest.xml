@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.MenuActivity"></activity>
+        <activity android:name=".activity.MenuActivity"
+            android:parentActivityName=".activity.HomeActivity"></activity>
         <activity
             android:name=".activity.SettingsUserActivity"
             android:parentActivityName=".activity.HomeActivity" />
